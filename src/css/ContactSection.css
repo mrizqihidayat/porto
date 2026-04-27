@@ -1,0 +1,165 @@
+.contact-section {
+  padding: 80px var(--page-x) 0px;
+  background: var(--ink); /* Hitam */
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+
+.contact-circle {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: var(--red);
+  opacity: 0.15;
+  top: -150px;
+  left: -100px;
+  z-index: 1;
+  animation: contactCirclePulse 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes contactCirclePulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+}
+}
+
+.cta-bg-shape {
+  position: absolute;
+  right: -5%;
+  top: 10%;
+  width: 450px;
+  height: 450px;
+  color: rgba(255, 255, 255, 0.03);
+  z-index: 1;
+  transform: rotate(15deg);
+  pointer-events: none;
+}
+
+.cta-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px; 
+}
+
+.cta-heading {
+  font-family: var(--font-d);
+  font-size: clamp(60px, 8vw, 110px);
+  color: var(--bg);
+  text-align: center;
+  line-height: 1;
+  letter-spacing: -2px;
+  margin-top: 20px;
+}
+
+.text-red {
+  color: var(--red);
+}
+
+.cta-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 100px;
+}
+
+.cta-label {
+  display: block;
+  font-size: 13px;
+  color: var(--bg);
+  opacity: 0.6;
+  margin-bottom: 12px;
+}
+
+.cta-email-link {
+  font-size: 20px;
+  color: var(--red);
+  text-decoration: none;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+
+.cta-email-link:hover {
+  opacity: 0.8;
+}
+
+.cta-social-links {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.cta-social-links a {
+  color: var(--bg);
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.cta-social-links a:hover {
+  color: var(--red);
+}
+
+
+@media (max-width: 900px) {
+  .cta-bg-shape {
+    width: 300px;
+    height: 300px;
+    right: -10%;
+    top: 5%;
+  }
+
+  .contact-circle {
+    width: 300px;
+    height: 300px;
+    top: -100px;
+  }
+
+  .cta-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+    margin-top: 80px;
+  }
+}
+
+@media (max-width: 560px) {
+  .contact-section {
+    padding: 80px var(--page-x) 60px;
+  }
+
+  .cta-heading {
+    margin-top: 0;
+    text-align: left;
+    letter-spacing: -1px;
+  }
+
+  .cta-bg-shape {
+    width: 250px;
+    height: 250px;
+    top: -5%;
+    right: -20%;
+  }
+
+  .cta-social-links {
+    gap: 16px;
+    flex-direction: column; /* Sosmed berjejer ke bawah di HP */
+  }
+}

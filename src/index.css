@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --bg: #f4f4ef;
+  --ink: #111111;
+  --ink2: #555555;
+  --red: #d91e1e;
+  --card: #ffffff;
+  --border: #ebebeb9f;
+  --font-d: 'Bebas Neue', cursive;
+  --font-h: 'Syne', sans-serif;
+  --font-b: 'DM Sans', sans-serif;
+  --page-x: 52px;
+}
+
+@media (max-width: 900px) {
+  :root {
+    --page-x: 20px;
+  }
+
+  body {
+    padding-top: 64px;
+  }
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-b);
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

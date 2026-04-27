@@ -1,0 +1,17 @@
+footer {
+  background: var(--ink);
+  padding: 20px var(--page-x);
+  color: var(--ink2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+@media (max-width: 900px) {
+  footer {
+    flex-direction: column;
+    gap: 10px;
+    padding: 24px var(--page-x);
+  }
+}
