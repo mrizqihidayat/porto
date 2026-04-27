@@ -7,6 +7,7 @@ import tech5 from '../assets/tech/technology_5.png'
 import tech6 from '../assets/tech/technology_6.png'
 import tech7 from '../assets/tech/technology_7.png'
 import tech8 from '../assets/tech/technology_8.png'
+import tech9 from '../assets/tech/technology_9.png'
 import tool1 from '../assets/tool/tools_1.png'
 import tool2 from '../assets/tool/tools_2.png'
 import tool3 from '../assets/tool/tools_3.png'
@@ -25,6 +26,7 @@ const techStack = [
   { name: 'Node.js', src: tech6 },
   { name: 'SQL', src: tech7 },
   { name: 'Tailwind CSS', src: tech8 },
+  { name: 'Wordpress', src: tech9 },
 ]
 
 const tools = [
