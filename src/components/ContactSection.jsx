@@ -1,8 +1,11 @@
 import '../css/ContactSection.css'
+import { useReveal, anim } from '../hooks/useReveal'
 
 const ContactSection = () => {
+  const [sectionRef, visible] = useReveal()
+
   return (
-    <section id="contact" className="contact-section">
+    <section id="contact" className="contact-section" ref={sectionRef} style={anim.fadeUp(visible)}>
       
       <div className="contact-circle"></div>
 

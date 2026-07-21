@@ -1,4 +1,5 @@
 import '../css/TechToolsSection.css'
+import { useReveal, anim } from '../hooks/useReveal'
 import tech1 from '../assets/tech/technology_1.png'
 import tech2 from '../assets/tech/technology_2.png'
 import tech3 from '../assets/tech/technology_3.png'
@@ -40,8 +41,11 @@ const tools = [
   { name: 'Figma', src: tool8 },
 ]
 
-const TechToolsSection = () => (
-  <section className="tech-tools-section" id="tech-tools">
+const TechToolsSection = () => {
+  const [sectionRef, visible] = useReveal()
+
+  return (
+    <section className="tech-tools-section" id="tech-tools" ref={sectionRef} style={anim.fadeUp(visible)}>
     <div className="tech-tools-container">
       <div className="tech-tools-column">
         <p className="section-kicker">My Tech Stack</p>
@@ -67,7 +71,8 @@ const TechToolsSection = () => (
         </div>
       </div>
     </div>
-  </section>
-)
+    </section>
+  )
+}
 
 export default TechToolsSection

@@ -1,11 +1,13 @@
 import { useLayoutEffect, useRef, useState } from 'react'
 import '../css/ExperienceSection.css'
+import { useReveal, anim } from '../hooks/useReveal'
 
 const clamp = (value, min, max) => Math.min(Math.max(value, min), max)
 
 const ExperienceSection = ({ experiences }) => {
   const layoutRef = useRef(null)
   const itemRefs = useRef([])
+  const [sectionRef, visible] = useReveal()
   const [lineMetrics, setLineMetrics] = useState({
     top: 0,
     height: 0,
@@ -65,7 +67,7 @@ const ExperienceSection = ({ experiences }) => {
   }, [experiences])
 
   return (
-    <section className="experience" id="experience">
+    <section className="experience" id="experience" ref={sectionRef}>
       <div className="exp-title">
         WORK <span>EXPERIENCE</span>
       </div>
@@ -91,6 +93,7 @@ const ExperienceSection = ({ experiences }) => {
               ref={(element) => {
                 itemRefs.current[index] = element
               }}
+            style={anim.slideRight(visible, index * 0.1)}
             >
               <div className="exp-year">{experience.year}</div>
               <div className="exp-body">

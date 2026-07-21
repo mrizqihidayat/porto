@@ -1,5 +1,6 @@
 import { useMemo, useState, useEffect } from 'react'
 import '../css/ProjectSection.css'
+import { useReveal, anim } from '../hooks/useReveal'
 
 const filters = ['All', 'UI/UX', 'Frontend', 'Fullstack']
 const PROJECTS_PER_PAGE = 6
@@ -124,6 +125,7 @@ const ProjectCard = ({ project }) => {
 const ProjectsSection = ({ projects }) => {
   const [activeFilter, setActiveFilter] = useState('All')
   const [currentPage, setCurrentPage] = useState(0)
+  const [sectionRef, visible] = useReveal()
 
   const filteredProjects = useMemo(() => {
     if (activeFilter === 'All') {
@@ -152,7 +154,7 @@ const ProjectsSection = ({ projects }) => {
   }
 
   return (
-    <section className="projects" id="projects">
+    <section className="projects" id="projects" ref={sectionRef} style={anim.fadeUp(visible)}>
       <div className="section-head">
         <div className="section-title">
           Projects <em>Portofolio.</em>

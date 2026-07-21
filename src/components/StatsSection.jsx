@@ -1,9 +1,13 @@
 import '../css/StatsSection.css'
+import { useReveal, anim } from '../hooks/useReveal'
 
-const StatsSection = ({ items }) => (
-  <div className="stats">
-    {items.map((item) => (
-      <div className="stat-item" key={item.value}>
+const StatsSection = ({ items }) => {
+  const [ref, visible] = useReveal()
+
+  return (
+    <div className="stats" ref={ref}>
+    {items.map((item, idx) => (
+      <div className="stat-item" key={item.value} style={anim.scaleUp(visible, idx * 0.1)}>
         <div className="stat-num">
           <span className="stat-plus">+</span>
           {item.value}
@@ -13,7 +17,8 @@ const StatsSection = ({ items }) => (
         </div>
       </div>
     ))}
-  </div>
-)
+    </div>
+  )
+}
 
 export default StatsSection
