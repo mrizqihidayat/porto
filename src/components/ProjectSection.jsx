@@ -24,12 +24,30 @@ const ProjectCard = ({ project }) => {
     setCurrentImageIndex(index)
   }
 
+  const handlePrevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length)
+  }
+
+  const handleNextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % images.length)
+  }
+
   return (
     <div className="proj-card" key={project.num}>
       <div className="proj-num"></div>
       <div className="proj-thumb-wrap">
         {images && images.length > 0 ? (
           <>
+            {hasMultipleImages && (
+              <button
+                type="button"
+                className="proj-nav-btn proj-nav-prev"
+                onClick={handlePrevImage}
+                aria-label="Previous image"
+              >
+                &#10094;
+              </button>
+            )}
             {images.map((image, index) => (
               <img
                 key={`${project.num}-${index}`}
@@ -39,6 +57,16 @@ const ProjectCard = ({ project }) => {
                 aria-hidden={currentImageIndex !== index}
               />
             ))}
+            {hasMultipleImages && (
+              <button
+                type="button"
+                className="proj-nav-btn proj-nav-next"
+                onClick={handleNextImage}
+                aria-label="Next image"
+              >
+                &#10095;
+              </button>
+            )}
           </>
         ) : (
           <div className="proj-thumb proj-thumb-empty">No Image</div>
@@ -69,12 +97,12 @@ const ProjectCard = ({ project }) => {
       </div>
       <p className="proj-desc" dangerouslySetInnerHTML={{ __html: project.desc }} />
       {project.note && <p className="proj-note">Note: {project.note}</p>}
-      <div className={`proj-actions ${isUiUx ? 'proj-actions-single' : ''}`}>
+      <div className={`proj-actions ${isUiUx || !project.codeUrl ? 'proj-actions-single' : ''}`}>
         {isUiUx ? (
           <a className="btn-view btn-view-single" href={project.codeUrl} target="_blank" rel="noreferrer">
             View Design
           </a>
-        ) : (
+        ) : project.codeUrl ? (
           <>
             <a className="btn-view" href={project.codeUrl} target="_blank" rel="noreferrer">
               View Code
@@ -83,6 +111,10 @@ const ProjectCard = ({ project }) => {
               Go To Page
             </a>
           </>
+        ) : (
+          <a className="btn-view btn-view-single" href={project.pageUrl} target="_blank" rel="noreferrer">
+            Go To Page
+          </a>
         )}
       </div>
     </div>

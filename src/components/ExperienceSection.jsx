@@ -96,7 +96,15 @@ const ExperienceSection = ({ experiences }) => {
               <div className="exp-body">
                 <div className="exp-role">{experience.role}</div>
                 <div className="exp-company">{experience.company}</div>
-                <p className="exp-desc">{experience.desc}</p>
+                {Array.isArray(experience.desc) ? (
+                  <ul className="exp-desc-list">
+                    {experience.desc.map((item, idx) => (
+                      <li key={idx} className="exp-desc-item">{item}</li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="exp-desc">{experience.desc}</p>
+                )}
               </div>
               <div className="exp-badge">{experience.badge}</div>
             </div>
